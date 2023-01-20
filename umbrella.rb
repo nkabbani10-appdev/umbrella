@@ -1,11 +1,11 @@
 require "json"
 require("open-uri")
 
-p "where are you located?"
+"where are you located?"
 
 user_location = "Chicago"
 
-p user_location
+user_location
 
 
 gmaps_url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{ user_location }&key=#{ENV.fetch("GMAPS_KEY")}"
@@ -50,3 +50,10 @@ data_array = hourly_hash.fetch("data")
 hour_1_hash = data_array[1]
 
 p precip_probability = hour_1_hash.fetch("precipProbability")
+
+
+13.times do |index|
+  if precip_probability >= 0.1
+    p "precipitation probability is " + precip_probability.to_s
+  end
+end
